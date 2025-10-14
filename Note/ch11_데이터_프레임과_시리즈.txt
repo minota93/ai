@@ -1,0 +1,33 @@
+ch11 데이터 프레임과 시리즈
+	1절 판다스 패키지
+		데이터 분석을 위해 반드시 알아야 할 패키지.
+		2차원 구조인 데이터프레임, 1차원 구조인 시리즈 제공
+		장점: 데이터프레임생성, 파일io, 레이블링, 부분데이터추출, 
+		       크기변경,데이터 분할, 병합, 데이터구조변경,결측치 처리
+	2절 데이터 프레임 만들기
+		데이터프레임변수 = pd.DataFrame(데이터) (이후 데이터프레임변수는 df로 생략)
+		df.to_dict() : 데이터프레임을 딕셔너리로
+		df.to_numpy(), df.values : 데이터프레임을 넘파이로
+		df.dtypes : 열의 타입
+		df.info() : 데이터프레임 속성출력 ★
+		df[열이름].astype(np.타입명) : 열이름의 값들의 타입을 타입명으로 변경, 단 결측치는 float64이므로 int로 형변환 불가
+		df.shape : (행 갯수, 열갯수)로 리턴
+	    2.3 read_csv	
+		pd.read_csv('파일경로', 
+				encoding = "인코딩명", sep="데이터를 나누는 문자", comment="주석처리문자" #생략가능
+				parse_dates=[날짜열명]) # datetime64형으로 읽어올 필드 지정
+		
+	    2.4 패키지에서 가져오기
+		sklearn(머신러닝 패키지) : from sklearn import datasets
+		statsmodels(R 패키지) : from statsmodels.api import datasets
+		seaborn(시각화 패키지) :import seaborn as sns
+		df.feature_names : 데이터프레임의 열이름 확인
+		[col[:-5].replace(' ',"_") for col in iris.feature_names] : 열 이름변경(특수문자는 _외엔 쓰지 않는 것이 좋음)
+	3절 이름(열,행) 지정하기
+	    3.1 열이름 지정하기
+		df.columns['열이름1','열이름2',....] : 열 이름 변경(한글 가능)
+		df.index=['행이름1','행이름2',.....] ; 행 이름 변경(한글가능)
+		df.loc[행이름,열이름] : 행과 열 이름으로 부분 데이터 조회( : 를 이용해 범위로 조회 가능)
+		df.iloc[행번호,열번호] : 행과 열 순번으로 부분데이터 조회 ( : 를 이용해 범위로 조회 가능)
+		df[datatime열].dt.(year, month, weekday) : 날짜의 년, 월, 위크데이(월0 ~일6) 조회
+		
