@@ -16,4 +16,4 @@ table.dataframe{font-size:12px;}
 """))
 
 타이틀
-<b><font size="6" color="red">ch.03 데이터 구조</font></b>
+<b><font size="6" color="red">ch.13 데이터 구조</font></b>
